@@ -22,7 +22,7 @@ app.post("/buffer", async (req, res) => {
   // Setear ventana de 5 segundos si no existe
     const ttl = await redis.ttl(`buffer:${sender}`);
     if (ttl === -1) {
-    await redis.expire(`buffer:${sender}`, 5);
+    await redis.expire(`buffer:${sender}`, 15);
     }
 
     res.json({ ok: true });
